@@ -1,0 +1,16 @@
+services:
+  apachephp:
+    image: php:8.2-apache
+    container_name: apache_tyler
+    ports:
+      - "8091:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./logs:/var/log/apache2
+    restart: unless-stopped
+    networks:
+      - webapps
+
+networks:
+  webapps:
+    external: true
